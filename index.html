@@ -2,10 +2,226 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Test Oiowa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oiowa - Consulting marketing et communication</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --green:#00FF00;
+    --orange:#FFA500;
+    --pink:#FF007F;
+    --blue:#00FFFF;
+    --dark:#111;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    font-family:'Open Sans', sans-serif;
+    line-height:1.6;
+    color:var(--dark);
+    background:white;
+}
+
+h1,h2,h3 {
+    font-family:'Montserrat', sans-serif;
+    margin-bottom:20px;
+}
+
+section {
+    padding:80px 20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.hero {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    background:linear-gradient(135deg,var(--pink),var(--orange));
+    color:white;
+}
+
+.hero h1 {
+    font-size:3rem;
+}
+
+.subtitle {
+    font-size:1.2rem;
+    margin-bottom:30px;
+}
+
+ul {
+    list-style:none;
+    margin-top:20px;
+}
+
+ul li {
+    margin:10px 0;
+    font-weight:600;
+}
+
+button, .btn {
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 28px;
+    border:none;
+    background:var(--blue);
+    color:black;
+    font-weight:600;
+    border-radius:30px;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover {
+    transform:scale(1.05);
+}
+
+.alt-section {
+    background:#f7f7f7;
+}
+
+.services {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.card {
+    padding:25px;
+    border-radius:15px;
+    background:white;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover {
+    transform:translateY(-5px);
+}
+
+.footer {
+    text-align:center;
+    padding:40px 20px;
+    background:#111;
+    color:white;
+    font-size:0.9rem;
+}
+
+.top-button {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:var(--green);
+    border:none;
+    padding:12px 16px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:2.2rem;
+    }
+}
+</style>
 </head>
+
 <body>
-<h1>Bonjour, ceci est un test</h1>
-<p>Si tu vois ceci, ton HTML fonctionne !</p>
+
+<!-- HERO -->
+<section class="hero" id="top">
+<h1>Oiowa</h1>
+<p class="subtitle">Freelance et consultante en marketing et communication</p>
+
+<p>Je m'appelle Camille et j'accompagne les entreprises dans le développement de leur communication et de leur stratégie digitale avec une approche pragmatique, efficace et orientée performance.</p>
+
+<ul>
+<li>✔ Des solutions claires</li>
+<li>✔ Des actions rapides à mettre en place</li>
+<li>✔ Un accompagnement simple</li>
+</ul>
+
+<a class="btn" href="https://www.linkedin.com/company/oiowa/" target="_blank">Me contacter sur LinkedIn</a>
+</section>
+
+<!-- PRESENTATION -->
+<section>
+<h2>Simplifier votre communication pour accélérer votre croissance</h2>
+<p>Aujourd’hui, développer sa visibilité et structurer sa communication est devenu essentiel. Pourtant, il est souvent difficile de savoir par où commencer ou comment prioriser ses actions.</p>
+
+<p>Oiowa vous aide à :</p>
+<ol>
+<li>Clarifier votre stratégie de communication</li>
+<li>Structurer votre présence digitale</li>
+<li>Optimiser vos actions marketing</li>
+<li>Mettre en place des solutions concrètes et efficaces</li>
+</ol>
+</section>
+
+<!-- SERVICES -->
+<section class="alt-section">
+<h2>Mes domaines d’accompagnement</h2>
+<div class="services">
+
+<div class="card">
+<h3>Stratégie de communication</h3>
+<p>Analyse de votre positionnement, définition de vos messages clés et construction d’un plan d’actions adapté à vos objectifs.</p>
+</div>
+
+<div class="card">
+<h3>Marketing digital</h3>
+<p>Optimisation de votre visibilité en ligne, développement de votre présence digitale et amélioration de votre acquisition de clients.</p>
+</div>
+
+<div class="card">
+<h3>Structuration et optimisation</h3>
+<p>Mise en place de méthodes et d’outils simples pour rendre votre communication plus efficace et plus cohérente.</p>
+</div>
+
+<div class="card">
+<h3>Transmission et accompagnement</h3>
+<p>Conseils, accompagnement et partage de bonnes pratiques pour vous rendre autonome dans vos actions.</p>
+</div>
+
+</div>
+</section>
+
+<!-- A PROPOS -->
+<section>
+<h2>Une expertise au service des associations, TPE et PME</h2>
+<p>Oiowa accompagne les dirigeants et les équipes qui souhaitent structurer leur marketing et développer leur visibilité sans complexifier leur organisation.</p>
+<p>L’objectif : aller à l’essentiel, proposer des solutions adaptées et générer des résultats durables.</p>
+</section>
+
+<!-- CTA -->
+<section class="alt-section" style="text-align:center">
+<h2>Parlons de votre projet</h2>
+<p>Vous souhaitez structurer votre communication ou développer votre visibilité ?</p>
+<a class="btn" href="https://www.linkedin.com/company/oiowa/" target="_blank">Prendre contact</a>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+<p>Oiowa – Consulting en communication et marketing digital</p>
+<p>© Oiowa – Tous droits réservés</p>
+<p>Mentions légales – Contact</p>
+</div>
+
+<!-- BOUTON TOP -->
+<button class="top-button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
 </body>
 </html>
