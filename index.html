@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oiowa - Consulting marketing et communication</title>
 <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -29,6 +29,7 @@ body {
     line-height:1.6;
     color:var(--dark);
     background:white;
+    text-align:center;
 }
 
 h1,h2,h3 {
@@ -47,22 +48,28 @@ section {
     display:flex;
     flex-direction:column;
     justify-content:center;
+    align-items:center;
     text-align:center;
+}
 
+.hero img {
+    max-width:200px;
+    margin-bottom:20px;
 }
 
 .hero h1 {
-    font-size:3rem;
+    font-size:2.5rem;
 }
 
 .subtitle {
-    font-size:1.2rem;
+    font-size:1.5rem;
     margin-bottom:30px;
 }
 
 ul {
     list-style:none;
     margin-top:20px;
+    padding-left:0;
 }
 
 ul li {
@@ -90,6 +97,7 @@ button, .btn {
 
 .alt-section {
     background:#f7f7f7;
+    border-radius:15px;
 }
 
 .services {
@@ -105,6 +113,7 @@ button, .btn {
     background:white;
     box-shadow:0 5px 15px rgba(0,0,0,0.08);
     transition:0.3s;
+    text-align:center;
 }
 
 .card:hover {
@@ -133,7 +142,10 @@ button, .btn {
 
 @media(max-width:768px){
     .hero h1{
-        font-size:2.2rem;
+        font-size:2rem;
+    }
+    .subtitle {
+        font-size:1.2rem;
     }
 }
 </style>
@@ -143,9 +155,8 @@ button, .btn {
 
 <!-- HERO -->
 <section class="hero" id="top">
-<img src="logo.png" alt="Oiowa Logo" style="max-width:150px; margin-bottom:20px;">
-<h1>Oiowa</h1>
-<p class="subtitle">Freelance et consultante en marketing et communication</p>
+<img src="logo.png" alt="Oiowa Logo">
+<h1 class="subtitle">Freelance et consultante en marketing et communication</h1>
 
 <p>Je m'appelle Camille et j'accompagne les entreprises dans le développement de leur communication et de leur stratégie digitale avec une approche pragmatique, efficace et orientée performance.</p>
 
@@ -155,7 +166,9 @@ button, .btn {
 <li>✔ Un accompagnement simple</li>
 </ul>
 
-<a class="btn" href="https://www.linkedin.com/company/oiowa/" target="_blank">Me contacter sur LinkedIn</a>
+<a href="https://www.linkedin.com/company/oiowa/" target="_blank">
+    <img src="linkedin.png" alt="LinkedIn" style="width:50px; margin-top:20px;">
+</a>
 </section>
 
 <!-- PRESENTATION -->
@@ -164,12 +177,12 @@ button, .btn {
 <p>Aujourd’hui, développer sa visibilité et structurer sa communication est devenu essentiel. Pourtant, il est souvent difficile de savoir par où commencer ou comment prioriser ses actions.</p>
 
 <p>Oiowa vous aide à :</p>
-<ol>
+<ul>
 <li>Clarifier votre stratégie de communication</li>
 <li>Structurer votre présence digitale</li>
 <li>Optimiser vos actions marketing</li>
 <li>Mettre en place des solutions concrètes et efficaces</li>
-</ol>
+</ul>
 </section>
 
 <!-- SERVICES -->
@@ -192,11 +205,6 @@ button, .btn {
 <p>Mise en place de méthodes et d’outils simples pour rendre votre communication plus efficace et plus cohérente.</p>
 </div>
 
-<div class="card">
-<h3>Transmission et accompagnement</h3>
-<p>Conseils, accompagnement et partage de bonnes pratiques pour vous rendre autonome dans vos actions.</p>
-</div>
-
 </div>
 </section>
 
@@ -204,7 +212,7 @@ button, .btn {
 <section>
 <h2>Une expertise au service des associations, TPE et PME</h2>
 <p>Oiowa accompagne les dirigeants et les équipes qui souhaitent structurer leur marketing et développer leur visibilité sans complexifier leur organisation.</p>
-<p>L’objectif : aller à l’essentiel, proposer des solutions adaptées et générer des résultats durables.</p>
+<p><strong>L’objectif : aller à l’essentiel, proposer des solutions adaptées et générer des résultats durables.</strong></p>
 </section>
 
 <!-- CTA -->
