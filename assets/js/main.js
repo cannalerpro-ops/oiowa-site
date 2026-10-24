@@ -228,6 +228,17 @@
         });
     });
 
+    /* ---------- E-mail reconstitué au chargement (limite la collecte par les robots) ---------- */
+
+    document.querySelectorAll('[data-email]').forEach(function (link) {
+        var parts = link.getAttribute('data-email').split('|');
+        var address = parts[0] + '@' + parts[1];
+        link.href = 'mailto:' + address;
+        link.querySelectorAll('[data-email-text]').forEach(function (el) {
+            el.textContent = address;
+        });
+    });
+
     /* ---------- Année du pied de page ---------- */
 
     document.querySelectorAll('[data-year]').forEach(function (el) {
