@@ -3,233 +3,296 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oiowa - Consulting marketing et communication</title>
-<!-- Favicon -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --green:#00FF00;
-    --orange:#FFA500;
-    --pink:#FF007F;
-    --blue:#00FFFF;
-    --dark:#111;
+<title>Oiowa – Consultante en marketing et communication pour associations, TPE et PME</title>
+<meta name="description" content="Oiowa accompagne les associations, TPE et PME dans leur stratégie de communication et leur marketing digital : des solutions claires, des actions rapides à mettre en place et un accompagnement simple.">
+<link rel="canonical" href="https://oiowa.fr/">
+<meta name="theme-color" content="#111111">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Oiowa">
+<meta property="og:title" content="Oiowa – Consulting marketing et communication">
+<meta property="og:description" content="Simplifier votre communication pour accélérer votre croissance.">
+<meta property="og:url" content="https://oiowa.fr/">
+<meta property="og:image" content="https://oiowa.fr/logo.png">
+<link rel="icon" href="favicon.ico" type="image/png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{
+    "@context":"https://schema.org",
+    "@type":"ProfessionalService",
+    "name":"Oiowa",
+    "description":"Consulting en communication et marketing digital pour associations, TPE et PME.",
+    "url":"https://oiowa.fr/",
+    "logo":"https://oiowa.fr/logo.png",
+    "founder":{"@type":"Person","name":"Camille Annaler"},
+    "sameAs":["https://www.linkedin.com/company/oiowa/"]
 }
-
-* {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body {
-    font-family:'Open Sans', sans-serif;
-    line-height:1.6;
-    color:var(--dark);
-    background:white;
-    text-align:center;
-}
-
-h1,h2,h3 {
-    font-family:'Montserrat', sans-serif;
-    margin-bottom:20px;
-}
-
-section {
-    padding:80px 20px;
-    max-width:1000px;
-    margin:auto;
-}
-
-.hero {
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-.hero img {
-    max-width:200px;
-    margin-bottom:20px;
-}
-
-.hero h1 {
-    font-size:2.5rem;
-}
-
-.subtitle {
-    font-size:1.5rem;
-    margin-bottom:30px;
-}
-
-ul {
-    list-style:none;
-    margin-top:20px;
-    padding-left:0;
-}
-
-ul li {
-    margin:10px 0;
-    font-weight:600;
-}
-
-button, .btn {
-    display:inline-block;
-    margin-top:30px;
-    padding:14px 28px;
-    border:none;
-    background:var(--blue);
-    color:black;
-    font-weight:600;
-    border-radius:30px;
-    cursor:pointer;
-    text-decoration:none;
-    transition:0.3s;
-}
-
-.btn:hover {
-    transform:scale(1.05);
-}
-
-.alt-section {
-    background:#f7f7f7;
-    border-radius:15px;
-}
-
-.services {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-    margin-top:40px;
-}
-
-.card {
-    padding:25px;
-    border-radius:15px;
-    background:white;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
-    transition:0.3s;
-    text-align:center;
-}
-
-.card:hover {
-    transform:translateY(-5px);
-}
-
-.footer {
-    text-align:center;
-    padding:40px 20px;
-    background:#111;
-    color:white;
-    font-size:0.9rem;
-}
-
-.top-button {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:var(--green);
-    border:none;
-    padding:12px 16px;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:18px;
-}
-
-@media(max-width:768px){
-    .hero h1{
-        font-size:2rem;
-    }
-    .subtitle {
-        font-size:1.2rem;
-    }
-}
-</style>
+</script>
 </head>
 
-<body>
+<body class="page-enter">
+
+<a class="sr-only" href="#contenu">Aller au contenu</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<!-- EN-TÊTE -->
+<header class="header">
+    <div class="container">
+        <a class="brand" href="./" aria-label="Oiowa – accueil"><img src="assets/img/logo-mark.png" alt="Oiowa" width="462" height="177"></a>
+        <nav class="nav" aria-label="Navigation principale">
+            <a href="./" aria-current="page">Accueil</a>
+            <a href="services.html">Services</a>
+            <a href="approche.html">Approche</a>
+            <a href="a-propos.html">À propos</a>
+            <a class="btn btn--primary" href="contact.html">Me contacter</a>
+        </nav>
+        <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<main id="contenu">
 
 <!-- HERO -->
-<section class="hero" id="top">
-<img src="logo.png" alt="Oiowa Logo">
-<h1 class="subtitle">Consultante en marketing et communication</h1>
-
-<p>Je m'appelle Camille et j'accompagne les entreprises dans le développement de leur communication et de leur stratégie digitale avec une approche pragmatique, efficace et orientée performance.</p>
-
-<ul>
-<li>✔ Des solutions claires</li>
-<li>✔ Des actions rapides à mettre en place</li>
-<li>✔ Un accompagnement simple</li>
-</ul>
-
-<a href="https://www.linkedin.com/company/oiowa/" target="_blank">
-    <img src="linkedin.png" alt="LinkedIn" style="width:50px; margin-top:20px;">
-</a>
+<section class="hero">
+    <div class="blobs" aria-hidden="true">
+        <span class="blob blob--green"></span>
+        <span class="blob blob--orange"></span>
+        <span class="blob blob--pink"></span>
+        <span class="blob blob--blue"></span>
+    </div>
+    <div class="container">
+        <div class="hero-inner">
+            <p class="hero-badge reveal"><span class="dot"></span>Consultante en marketing &amp; communication</p>
+            <h1 data-split>Une communication plus <span class="rotator" aria-hidden="true"><span class="gradient-text is-active">claire.</span><span class="gradient-text">simple.</span><span class="gradient-text">efficace.</span><span class="gradient-text">visible.</span></span><span class="sr-only">claire, simple et efficace.</span></h1>
+            <p class="hero-lead reveal" style="--delay:.5s">Je m'appelle Camille et j'accompagne les entreprises dans le développement de leur communication et de leur stratégie digitale, avec une approche pragmatique, efficace et orientée performance.</p>
+            <div class="btn-row reveal" style="--delay:.65s">
+                <a class="btn btn--primary" href="contact.html" data-magnetic>Parlons de votre projet
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a class="btn btn--ghost" href="services.html">Découvrir les services</a>
+            </div>
+            <ul class="hero-points reveal" style="--delay:.8s">
+                <li>Des solutions claires</li>
+                <li>Des actions rapides à mettre en place</li>
+                <li>Un accompagnement simple et pédagogique</li>
+            </ul>
+        </div>
+    </div>
+    <a class="scroll-hint" href="#presentation" aria-label="Faire défiler vers la suite"></a>
 </section>
 
-<!-- PRESENTATION -->
-<section>
-<h2>Simplifier votre communication pour accélérer votre croissance</h2>
-<p>Aujourd’hui, développer sa visibilité et structurer sa communication est devenu essentiel. Pourtant, il est souvent difficile de savoir par où commencer ou comment prioriser ses actions.</p>
+<!-- BANDEAU -->
+<div class="marquee-wrap" aria-hidden="true">
+<div class="marquee">
+    <div class="marquee-track">
+        <span>Stratégie de communication</span><span>Marketing digital</span><span>Visibilité en ligne</span><span>Acquisition</span>
+        <span>Plan d'actions</span><span>Présence digitale</span><span>Messages clés</span><span>Cohérence</span>
+        <span>Stratégie de communication</span><span>Marketing digital</span><span>Visibilité en ligne</span><span>Acquisition</span>
+        <span>Plan d'actions</span><span>Présence digitale</span><span>Messages clés</span><span>Cohérence</span>
+    </div>
+</div>
+</div>
 
-<p>Oiowa vous aide à :</p>
-<ul>
-<li>1. Clarifier votre stratégie de communication</li>
-<li>2. Structurer votre présence digitale</li>
-<li>3. Optimiser vos actions marketing</li>
-<li>4. Mettre en place des solutions concrètes et efficaces</li>
-</ul>
+<!-- PRÉSENTATION -->
+<section class="section" id="presentation">
+    <div class="container split">
+        <div class="reveal reveal--left">
+            <p class="eyebrow">Pourquoi Oiowa</p>
+            <h2>Simplifier votre communication pour <span class="mark">accélérer votre croissance</span></h2>
+            <p>Aujourd’hui, développer sa visibilité et structurer sa communication est devenu essentiel. Pourtant, il est souvent difficile de savoir par où commencer ou comment prioriser ses actions.</p>
+            <p>Oiowa vous aide à :</p>
+            <ul class="checklist">
+                <li style="--c:var(--green)">Clarifier votre stratégie de communication</li>
+                <li style="--c:var(--orange)">Structurer votre présence digitale</li>
+                <li style="--c:var(--pink)">Optimiser vos actions marketing et les automatiser</li>
+                <li style="--c:var(--blue)">Mettre en place des solutions concrètes et efficaces</li>
+            </ul>
+        </div>
+        <div class="reveal reveal--right" aria-hidden="true">
+            <div class="stack-visual">
+                <span class="orb"></span><span class="orb"></span><span class="orb"></span><span class="orb"></span>
+                <div class="orb-label"><strong>Aller à<br>l'essentiel</strong></div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- SERVICES -->
-<section class="alt-section">
-<h2>Mes domaines d’accompagnement</h2>
-<div class="services">
-
-<div class="card">
-<h3>Stratégie de communication</h3>
-<p>Analyse de votre positionnement, définition de vos messages clés et construction d’un plan d’actions adapté à vos objectifs.</p>
-</div>
-
-<div class="card">
-<h3>Marketing digital</h3>
-<p>Optimisation de votre visibilité en ligne, développement de votre présence digitale et amélioration de votre acquisition de clients.</p>
-</div>
-
-<div class="card">
-<h3>Structuration et optimisation</h3>
-<p>Mise en place de méthodes et d’outils simples pour rendre votre communication plus efficace et plus cohérente.</p>
-</div>
-
-</div>
+<section class="section section--soft">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">Services</p>
+            <h2>Mes domaines d’accompagnement</h2>
+            <p>Trois leviers complémentaires pour construire une communication qui vous ressemble et qui produit des résultats.</p>
+        </div>
+        <div class="grid grid--3" data-stagger>
+            <article class="card card--green reveal">
+                <span class="card-num" aria-hidden="true">01</span>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
+                <h3>Stratégie de communication</h3>
+                <p>Analyse de votre positionnement, définition de vos messages clés et construction d’un plan d’actions adapté à vos objectifs.</p>
+                <a class="link-arrow" href="services.html#strategie">En savoir plus</a>
+            </article>
+            <article class="card card--pink reveal">
+                <span class="card-num" aria-hidden="true">02</span>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 12l3-3 3 2 4-4"/></svg></div>
+                <h3>Marketing digital</h3>
+                <p>Optimisation de votre visibilité en ligne, développement de votre présence digitale et amélioration de votre acquisition de clients.</p>
+                <a class="link-arrow" href="services.html#digital">En savoir plus</a>
+            </article>
+            <article class="card card--blue reveal">
+                <span class="card-num" aria-hidden="true">03</span>
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 17.5h7M17.5 14v7"/></svg></div>
+                <h3>Structuration et optimisation</h3>
+                <p>Mise en place de méthodes et d’outils simples pour rendre votre communication plus efficace et plus cohérente.</p>
+                <a class="link-arrow" href="services.html#structuration">En savoir plus</a>
+            </article>
+        </div>
+    </div>
 </section>
 
-<!-- A PROPOS -->
-<section>
-<h2>Une expertise au service des associations, TPE et PME</h2>
-<p>Oiowa accompagne les dirigeants et les équipes qui souhaitent structurer leur marketing et développer leur visibilité sans complexifier leur organisation.</p>
-<p><strong>L’objectif : aller à l’essentiel, proposer des solutions adaptées et générer des résultats durables.</strong></p>
+<!-- MÉTHODE -->
+<section class="section">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">Approche</p>
+            <h2>Une méthode en <span class="mark mark--orange">4 étapes</span></h2>
+            <p>Un cadre clair pour avancer pas à pas, sans complexifier votre organisation.</p>
+        </div>
+        <div class="steps" data-stagger>
+            <div class="step reveal">
+                <div class="step-num">1</div>
+                <h3>Écouter</h3>
+                <p>Comprendre votre activité, vos objectifs et vos contraintes.</p>
+            </div>
+            <div class="step reveal">
+                <div class="step-num">2</div>
+                <h3>Analyser</h3>
+                <p>Faire le point sur votre communication actuelle et vos priorités.</p>
+            </div>
+            <div class="step reveal">
+                <div class="step-num">3</div>
+                <h3>Construire</h3>
+                <p>Définir un plan d’actions concret, réaliste et adapté à vos moyens.</p>
+            </div>
+            <div class="step reveal">
+                <div class="step-num">4</div>
+                <h3>Accompagner</h3>
+                <p>Vous aider à le mettre en place et à l’ajuster dans la durée.</p>
+            </div>
+        </div>
+        <p style="text-align:center" class="reveal"><a class="link-arrow" href="approche.html">Découvrir l’approche en détail</a></p>
+    </div>
+</section>
+
+<!-- CIBLES -->
+<section class="section section--dark">
+    <div class="blobs" aria-hidden="true">
+        <span class="blob blob--pink" style="--s:380px;top:-30%;right:-10%"></span>
+        <span class="blob blob--green" style="--s:320px;bottom:-30%;left:-8%;animation-delay:-6s"></span>
+    </div>
+    <div class="container split" style="position:relative;z-index:1">
+        <div class="reveal reveal--left">
+            <p class="eyebrow">Pour qui ?</p>
+            <h2>Une expertise au service des associations, TPE et PME</h2>
+            <p>Oiowa accompagne les dirigeants et les équipes qui souhaitent structurer leur marketing et développer leur visibilité sans complexifier leur organisation.</p>
+        </div>
+        <div class="grid grid--2" data-stagger>
+            <div class="value reveal">
+                <div class="value-dot"></div>
+                <h3>Associations</h3>
+                <p>Faire connaître vos actions et mobiliser votre communauté.</p>
+            </div>
+            <div class="value reveal">
+                <div class="value-dot"></div>
+                <h3>TPE &amp; PME</h3>
+                <p>Gagner en visibilité avec des actions adaptées à votre temps disponible.</p>
+            </div>
+            <div class="value reveal">
+                <div class="value-dot"></div>
+                <h3>Dirigeants</h3>
+                <p>Prendre du recul et prioriser les bonnes actions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OBJECTIF -->
+<section class="section">
+    <div class="container" style="text-align:center">
+        <p class="eyebrow reveal">L’objectif</p>
+        <h2 class="reveal" style="max-width:900px;margin:0 auto">Aller à l’essentiel, proposer des solutions adaptées et générer des <span class="gradient-text">résultats durables.</span></h2>
+    </div>
 </section>
 
 <!-- CTA -->
-<section class="alt-section" style="text-align:center";margin-bottom:60px>
-<h2>Parlons de votre projet</h2>
-<p>Vous souhaitez structurer votre communication ou développer votre visibilité ?</p>
-<a class="btn" href="https://www.linkedin.com/company/oiowa/" target="_blank">Prendre contact</a>
+<section class="section" style="padding-top:0">
+    <div class="container">
+        <div class="cta reveal reveal--zoom">
+            <div class="blobs" aria-hidden="true">
+                <span class="blob blob--green"></span>
+                <span class="blob blob--orange"></span>
+                <span class="blob blob--pink"></span>
+                <span class="blob blob--blue"></span>
+            </div>
+            <h2>Parlons de votre projet</h2>
+            <p>Vous souhaitez structurer votre communication ou développer votre visibilité ? Échangeons sur vos besoins.</p>
+            <div class="btn-row">
+                <a class="btn btn--light" href="contact.html" data-magnetic>Prendre contact
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- FOOTER -->
-<div class="footer">
-<p>Oiowa – Consulting en communication et marketing digital</p>
-<p>© Camille ANNALER EI – Tous droits réservés</p>
-</div>
+</main>
 
-<!-- BOUTON TOP -->
-<button class="top-button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<!-- PIED DE PAGE -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="assets/img/logo-mark.png" alt="Oiowa" width="462" height="177" loading="lazy">
+                <p>Consulting en communication et marketing digital pour les associations, TPE et PME.</p>
+                <a class="footer-social" href="https://www.linkedin.com/company/oiowa/" target="_blank" rel="noopener"><img src="linkedin.png" alt="" width="30" height="30" loading="lazy">Suivre Oiowa sur LinkedIn</a>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="./">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="approche.html">Approche</a></li>
+                    <li><a href="a-propos.html">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html#strategie">Stratégie de communication</a></li>
+                    <li><a href="services.html#digital">Marketing digital</a></li>
+                    <li><a href="services.html#structuration">Structuration et optimisation</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span data-year>2026</span> Camille ANNALER EI – Tous droits réservés</p>
+            <p><a href="mentions-legales.html">Mentions légales</a></p>
+        </div>
+    </div>
+</footer>
 
+<button class="top-button" type="button" aria-label="Revenir en haut de la page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
