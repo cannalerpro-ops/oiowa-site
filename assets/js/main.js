@@ -77,9 +77,10 @@
             Array.prototype.slice.call(node.childNodes).forEach(function (child) {
                 if (child.nodeType === 3) {
                     var frag = document.createDocumentFragment();
-                    child.textContent.split(/(\s+)/).forEach(function (part) {
+                    // découpe sur les espaces normaux seulement : l'espace insécable garde « moi : » ensemble
+                    child.textContent.split(/([ \t\n\r]+)/).forEach(function (part) {
                         if (!part) return;
-                        if (/^\s+$/.test(part)) {
+                        if (/^[ \t\n\r]+$/.test(part)) {
                             frag.appendChild(document.createTextNode(part));
                             return;
                         }
