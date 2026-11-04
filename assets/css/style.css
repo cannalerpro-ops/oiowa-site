@@ -1166,6 +1166,35 @@ a.sr-only:focus {
 
 .cta .btn-row { justify-content:center; }
 
+/* ---------- Références ---------- */
+
+.ref-card { display:flex; flex-direction:column; }
+
+.ref-mark {
+    display:grid;
+    place-items:center;
+    width:72px;
+    height:72px;
+    margin-bottom:22px;
+    border-radius:20px;
+    background:color-mix(in srgb,var(--c,var(--blue)) 30%,white);
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+    font-size:1.15rem;
+    letter-spacing:.02em;
+    transition:transform .5s var(--ease);
+}
+
+.card:hover .ref-mark { transform:rotate(-6deg) scale(1.06); }
+
+.ref-sector {
+    margin-bottom:6px;
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+}
+
 /* ---------- À propos ---------- */
 
 .portrait {
