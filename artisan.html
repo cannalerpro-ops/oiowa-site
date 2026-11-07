@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site internet et automatisations pour artisans du bâtiment | Oiowa</title>
+<meta name="description" content="Plombiers, électriciens, chauffagistes : un site qui vous apporte des demandes de devis, et des SMS automatiques pour ne plus perdre un client. Maquette offerte en 48 h, site hébergé en France.">
+<link rel="canonical" href="https://oiowa.fr/artisan">
+<meta name="theme-color" content="#111111">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Oiowa">
+<meta property="og:title" content="Votre site et vos devis tournent tout seuls | Oiowa artisans">
+<meta property="og:description" content="Un site qui vous apporte des demandes de devis, et des SMS automatiques pour ne plus perdre un client. Maquette offerte en 48 h.">
+<meta property="og:url" content="https://oiowa.fr/artisan">
+<meta property="og:image" content="https://oiowa.fr/logo.png">
+<link rel="icon" href="favicon.ico" type="image/png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Styles propres à la page artisans (le reste vient de style.css) */
+.sup { font-size:.7em; vertical-align:super; color:var(--muted); text-decoration:none; }
+.trades { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:8px; }
+.trades .pill { font-size:.9rem; padding:8px 16px; }
+.stat strong.stat-word { font-size:clamp(1.5rem,3vw,2rem); }
+.stat span { display:block; }
+.problem-note { max-width:820px; margin:40px auto 0; text-align:center; font-size:1.15rem; color:var(--ink); font-weight:600; }
+.auto-card h3 { font-size:1.2rem; margin-bottom:10px; }
+.auto-card .card-icon { margin-bottom:18px; }
+.trade-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
+.trade { padding:24px; border-radius:var(--radius); background:white; box-shadow:var(--shadow); }
+.trade h3 { font-size:1.05rem; margin-bottom:8px; }
+.trade p { color:var(--muted); font-size:.97rem; }
+.price-toggle { display:inline-flex; flex-wrap:wrap; justify-content:center; gap:4px; padding:5px; border-radius:999px; background:white; box-shadow:var(--shadow); margin:0 auto 40px; }
+.price-toggle button { font:600 .95rem 'Open Sans',sans-serif; border:0; background:transparent; color:var(--muted); padding:10px 20px; border-radius:999px; cursor:pointer; }
+.price-toggle button[aria-pressed="true"] { background:var(--dark); color:white; }
+.price-toggle button:focus-visible, .plan .btn:focus-visible { outline:3px solid var(--pink); outline-offset:3px; }
+.toggle-wrap { text-align:center; }
+.plans { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:26px; max-width:980px; margin:0 auto; align-items:start; }
+.plan { position:relative; padding:36px 32px; border-radius:var(--radius); background:white; box-shadow:var(--shadow); display:grid; gap:18px; }
+.plan--star { border:2px solid transparent; background:linear-gradient(white,white) padding-box,var(--gradient) border-box; box-shadow:var(--shadow-lg); }
+.plan-badge { justify-self:start; font:700 .78rem 'Montserrat',sans-serif; letter-spacing:.04em; background:var(--dark); color:white; padding:5px 12px; border-radius:999px; }
+.plan h3 { font-size:1.5rem; }
+.plan .for { color:var(--muted); }
+.plan .price { font-variant-numeric:tabular-nums; }
+.plan .price .big { font:800 2.6rem/1 'Montserrat',sans-serif; color:var(--dark); }
+.plan .price .big small { font-size:1rem; font-weight:600; color:var(--muted); }
+.plan .price .then { color:var(--muted); margin-top:6px; }
+.plan .price .then b { color:var(--ink); }
+.plan .checklist { margin-top:0; }
+.plan .terms { font-size:.88rem; color:var(--muted); }
+.options { max-width:980px; margin:28px auto 0; text-align:center; color:var(--muted); font-size:.97rem; }
+.options strong { color:var(--ink); }
+.table-wrap { overflow-x:auto; border-radius:var(--radius); box-shadow:var(--shadow); background:white; }
+.compare { width:100%; min-width:720px; border-collapse:collapse; font-size:.97rem; }
+.compare th, .compare td { padding:16px 18px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+.compare thead th { font-family:'Montserrat',sans-serif; font-size:.95rem; background:var(--soft); }
+.compare th.us, .compare td.us { background:#f2fff2; font-weight:600; color:var(--ink); }
+.compare tbody tr:last-child td, .compare tbody tr:last-child th { border-bottom:0; }
+.compare tbody th { font-family:'Montserrat',sans-serif; font-weight:700; font-size:.92rem; }
+.team { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:26px; max-width:900px; margin:0 auto; }
+.member { display:grid; grid-template-columns:96px 1fr; gap:20px; align-items:start; padding:28px; border-radius:var(--radius); background:white; box-shadow:var(--shadow); }
+.member img, .member .avatar { width:96px; height:96px; border-radius:50%; object-fit:cover; }
+.member .avatar { display:grid; place-items:center; background:var(--gradient); color:white; font:800 2rem 'Montserrat',sans-serif; }
+.member h3 { font-size:1.2rem; }
+.member .role { color:var(--muted); font-size:.92rem; margin-bottom:8px; }
+.member p { font-size:.97rem; }
+.team-note { text-align:center; margin-top:30px; font-weight:600; color:var(--ink); }
+.cta .contact-line { margin-top:22px; font-size:1rem; }
+.cta .contact-line a { color:var(--ink); font-weight:600; }
+.sources { font-size:.85rem; color:var(--muted); }
+.sources ol { margin:10px 0 0 20px; display:grid; gap:4px; }
+.sources a { color:inherit; }
+.mini-nav { display:flex; align-items:center; gap:14px; }
+.mini-nav .btn { padding:12px 20px; font-size:.9rem; white-space:nowrap; }
+.hero-points li:nth-child(4)::before { background:var(--blue); box-shadow:0 0 12px var(--blue); }
+@media (max-width:600px) {
+    .member { grid-template-columns:1fr; }
+    .plan { padding:28px 22px; }
+    .mini-nav .btn { padding:9px 14px; font-size:.8rem; }
+}
+</style>
+</head>
+
+<body class="page-enter">
+
+<a class="sr-only" href="#contenu">Aller au contenu</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<!-- EN-TÊTE (page autonome, sans menu vers le reste du site) -->
+<header class="header">
+    <div class="container">
+        <a class="brand" href="artisan" aria-label="Oiowa – sites pour artisans"><img src="assets/img/logo-mark.png" alt="Oiowa" width="462" height="177"></a>
+        <div class="mini-nav">
+            <a class="btn btn--primary" href="#maquette">Ma maquette gratuite</a>
+        </div>
+    </div>
+</header>
+
+<main id="contenu">
+
+<!-- 1. EN-TÊTE DE PAGE -->
+<section class="hero">
+    <div class="blobs" aria-hidden="true">
+        <span class="blob blob--green"></span>
+        <span class="blob blob--orange"></span>
+        <span class="blob blob--pink"></span>
+        <span class="blob blob--blue"></span>
+    </div>
+    <div class="container">
+        <div class="hero-inner">
+            <p class="eyebrow reveal">Pour les plombiers, électriciens, chauffagistes et tous les artisans du bâtiment</p>
+            <h1 data-split>Votre site et vos devis tournent tout seuls, <span class="gradient-text">pendant que vous êtes sur le chantier.</span></h1>
+            <p class="hero-lead reveal" style="--delay:.5s">Oiowa crée votre site internet et s'occupe des tâches qui vous font perdre des clients : appels manqués, devis jamais relancés, avis Google jamais demandés. Vous restez sur vos chantiers, on s'occupe du reste.</p>
+            <div class="btn-row reveal" style="--delay:.65s">
+                <a class="btn btn--primary" href="#maquette" data-magnetic>Recevoir ma maquette gratuite
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a class="btn btn--ghost" href="#tarifs">Voir les tarifs</a>
+            </div>
+            <ul class="hero-points reveal" style="--delay:.8s">
+                <li>Maquette offerte en 48 h</li>
+                <li>Site en ligne en 10 jours</li>
+                <li>Hébergé en France</li>
+                <li>Le site vous appartient</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 2. MÉTIERS -->
+<section class="section" style="padding-top:10px;padding-bottom:40px">
+    <div class="container">
+        <div class="section-head section-head--center reveal" style="margin-bottom:24px">
+            <p class="eyebrow">On travaille avec les artisans du bâtiment</p>
+        </div>
+        <div class="trades reveal">
+            <span class="pill">Plombiers</span><span class="pill">Électriciens</span><span class="pill">Chauffagistes</span><span class="pill">Menuisiers</span><span class="pill">Paysagistes et jardiniers</span><span class="pill">Piscinistes</span><span class="pill">Multiservices</span><span class="pill">Peintres</span><span class="pill">Couvreurs</span>
+        </div>
+    </div>
+</section>
+
+<!-- 3. LES PROBLÈMES -->
+<section class="section section--soft">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">Le constat</p>
+            <h2>Vous êtes doué sur un chantier. Le reste vous prend <span class="mark mark--orange">trop de temps</span>.</h2>
+        </div>
+        <div class="stats" data-stagger>
+            <div class="stat reveal"><strong>10 h</strong><span>par semaine : c'est le temps qu'un chef d'entreprise artisanale passe en moyenne sur la gestion, soit 22 % de sa semaine de travail <a class="sup" href="#sources">(1)</a>. Des heures qui ne sont pas facturées.</span></div>
+            <div class="stat reveal"><strong>51 %</strong><span>des artisans du bâtiment citent la gestion des chantiers et l'administratif comme une source de stress <a class="sup" href="#sources">(2)</a>.</span></div>
+            <div class="stat reveal"><strong class="stat-word">Chaque chantier compte</strong><span>L'activité des entreprises artisanales du bâtiment a reculé tout au long de 2025 : -5 % au premier trimestre <a class="sup" href="#sources">(3)</a>, encore -2 % au quatrième <a class="sup" href="#sources">(4)</a>.</span></div>
+        </div>
+        <p class="problem-note reveal">Le téléphone sonne quand vous êtes sur l'échelle. Le devis envoyé lundi n'a jamais été relancé. Le client ravi n'a jamais laissé d'avis. On règle ça.</p>
+    </div>
+</section>
+
+<!-- 4. LA SOLUTION -->
+<section class="section">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">La solution</p>
+            <h2>Un site qui travaille pour vous, <span class="gradient-text">même quand vous avez les mains prises</span></h2>
+            <p>On crée votre site, puis on y branche cinq automatismes simples. Vous n'avez rien à installer ni à apprendre : tout arrive par SMS sur votre téléphone.</p>
+        </div>
+        <div class="grid grid--3" data-stagger>
+            <article class="card card--green auto-card reveal">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></div>
+                <h3>Plus aucune demande perdue</h3>
+                <p>Un client remplit le formulaire de devis sur votre site. Vous recevez un SMS dans la minute avec son nom, sa commune et son besoin. Lui reçoit une confirmation automatique.</p>
+            </article>
+            <article class="card card--orange auto-card reveal">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/><path d="M16 2l6 6M22 2l-6 6"/></svg></div>
+                <h3>Les appels manqués ne sont plus perdus</h3>
+                <p>Vous ne pouvez pas décrocher ? Le client reçoit aussitôt un SMS : « Je suis sur un chantier, je vous rappelle. Décrivez votre besoin ici. » Il ne passe pas à la concurrence.</p>
+            </article>
+            <article class="card card--pink auto-card reveal">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+                <h3>Vos devis sont relancés sans y penser</h3>
+                <p>Un devis sans réponse ? Une relance polie part automatiquement au bout de 3 jours, puis de 7 jours. Vous signez des chantiers que vous auriez oubliés.</p>
+            </article>
+            <article class="card card--blue auto-card reveal">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+                <h3>Les avis Google arrivent après chaque chantier</h3>
+                <p>Chantier terminé : votre client reçoit un SMS avec le lien pour laisser un avis. Plus d'avis, c'est plus de visibilité sur Google et plus de confiance des futurs clients.</p>
+            </article>
+            <article class="card card--green auto-card reveal">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg></div>
+                <h3>Les rendez-vous se prennent seuls</h3>
+                <p>Vos clients réservent une visite sur les créneaux que vous avez choisis. Le rendez-vous s'ajoute à votre agenda et un rappel part la veille. Fini les clients absents.</p>
+            </article>
+            <article class="card card--orange auto-card reveal">
+                <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+                <h3>Une démo en 10 minutes</h3>
+                <p>On vous montre tout le système en fonctionnement, sur une entreprise de démonstration, lors de notre premier appel. Vous voyez exactement ce que vos clients recevront.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- 5. ADAPTÉ À VOTRE MÉTIER -->
+<section class="section section--soft">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">Votre métier</p>
+            <h2>Un site pensé pour votre métier, pas un modèle passe-partout</h2>
+        </div>
+        <div class="trade-list" data-stagger>
+            <div class="trade reveal"><h3>Plombiers et chauffagistes</h3><p>Les urgences (fuite, panne de chauffe-eau) vous arrivent en priorité par SMS. Vos labels RGE et PG sont mis en avant.</p></div>
+            <div class="trade reveal"><h3>Électriciens</h3><p>Un formulaire qui pose les bonnes questions pour une borne de recharge ou une mise aux normes. Vos qualifications Qualifelec et IRVE sont bien visibles.</p></div>
+            <div class="trade reveal"><h3>Menuisiers</h3><p>Vos réalisations en photos, classées par type de projet, pour montrer la qualité de votre travail.</p></div>
+            <div class="trade reveal"><h3>Paysagistes et jardiniers</h3><p>Des demandes d'entretien régulier et de création de jardin bien séparées, et des rappels pour vos clients réguliers.</p></div>
+            <div class="trade reveal"><h3>Piscinistes</h3><p>Demandes d'entretien, de mise en route et d'hivernage, avec des rappels selon la saison.</p></div>
+            <div class="trade reveal"><h3>Multiservices</h3><p>Tous vos services sur un seul site, avec un formulaire qui oriente le client vers le bon type d'intervention.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. COMMENT ÇA MARCHE -->
+<section class="section">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">Comment ça marche</p>
+            <h2>Votre site en ligne en 10 jours, pour environ <span class="mark mark--green">une heure</span> de votre temps</h2>
+        </div>
+        <div class="steps" data-stagger>
+            <div class="step reveal"><div class="step-num">1</div><h3>Un appel de 15 minutes</h3><p>Vous nous parlez de votre entreprise, de vos services et de votre zone d'intervention.</p></div>
+            <div class="step reveal"><div class="step-num">2</div><h3>Votre maquette offerte en 48 h</h3><p>On vous envoie un aperçu de votre futur site. Vous décidez ensuite, sans engagement.</p></div>
+            <div class="step reveal"><div class="step-num">3</div><h3>Votre site en ligne en 10 jours</h3><p>Un questionnaire et quelques photos de chantiers. On s'occupe de tout le reste, automatismes compris.</p></div>
+            <div class="step reveal"><div class="step-num">4</div><h3>On reste à vos côtés</h3><p>Suivi à 1 mois et à 6 mois, deux mises à jour par an incluses, un seul interlocuteur.</p></div>
+        </div>
+        <p class="options reveal">Le délai de 10 jours démarre à la réception du questionnaire complet et des photos.</p>
+    </div>
+</section>
+
+<!-- 7. TARIFS -->
+<section class="section section--soft" id="tarifs">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">Tarifs</p>
+            <h2>Des prix clairs, <span class="gradient-text">sans surprise</span></h2>
+            <p>Hébergement, maintenance et mises à jour compris. Prix hors taxes.</p>
+        </div>
+        <div class="toggle-wrap">
+            <div class="price-toggle" role="group" aria-label="Mode de paiement">
+                <button type="button" id="mode-standard" aria-pressed="true" data-mode="standard">Avec frais de création</button>
+                <button type="button" id="mode-zero" aria-pressed="false" data-mode="zero">Sans frais de création</button>
+            </div>
+        </div>
+        <div class="plans">
+            <article class="plan">
+                <h3>Essentiel</h3>
+                <p class="for">Pour être trouvé sur Google et recevoir des demandes de devis.</p>
+                <div class="price" data-plan="essentiel">
+                    <div class="big"><span class="setup">890 €</span> <small>HT</small></div>
+                    <div class="then">puis <b class="monthly">49 €</b> HT par mois</div>
+                </div>
+                <ul class="checklist">
+                    <li style="--c:var(--green)">Site de 5 pages, beau sur téléphone</li>
+                    <li style="--c:var(--green)">Formulaire de demande de devis</li>
+                    <li style="--c:var(--green)">Fiche Google optimisée (photos, horaires, zone)</li>
+                    <li style="--c:var(--green)">Vos labels mis en avant : RGE, Qualibat, Qualifelec, décennale</li>
+                    <li style="--c:var(--green)">Hébergement en France, nom de domaine et sécurité</li>
+                    <li style="--c:var(--green)">2 mises à jour par an incluses</li>
+                    <li style="--c:var(--green)">Mentions légales et cookies en règle</li>
+                </ul>
+                <a class="btn btn--ghost" href="#maquette">Recevoir ma maquette gratuite</a>
+                <p class="terms" data-plan="essentiel">Sans engagement après la première année.</p>
+            </article>
+            <article class="plan plan--star">
+                <span class="plan-badge">Le plus complet</span>
+                <h3>Pack Chantiers</h3>
+                <p class="for">Pour ne plus perdre un seul client, même les mains dans le chantier.</p>
+                <div class="price" data-plan="chantiers">
+                    <div class="big"><span class="setup">1 490 €</span> <small>HT</small></div>
+                    <div class="then">puis <b class="monthly">99 €</b> HT par mois</div>
+                </div>
+                <ul class="checklist">
+                    <li style="--c:var(--pink)">Tout ce qui est dans Essentiel</li>
+                    <li style="--c:var(--pink)">Appel manqué : votre client reçoit un SMS automatique</li>
+                    <li style="--c:var(--pink)">Devis non signé : relance automatique à 3 et 7 jours</li>
+                    <li style="--c:var(--pink)">Fin de chantier : demande d'avis Google par SMS</li>
+                    <li style="--c:var(--pink)">Prise de rendez-vous en ligne, avec rappel la veille</li>
+                    <li style="--c:var(--pink)">Toutes vos demandes rangées au même endroit</li>
+                    <li style="--c:var(--pink)">Point de suivi à 1 mois et à 6 mois</li>
+                </ul>
+                <a class="btn btn--primary" href="#maquette">Recevoir ma maquette gratuite</a>
+                <p class="terms" data-plan="chantiers">Engagement 12 mois.</p>
+            </article>
+        </div>
+        <p class="options reveal"><strong>Options :</strong> page supplémentaire à partir de 300 € HT · connexion à votre logiciel de devis (Obat, Tolteck, Batappli…) à partir de 500 € HT · automatisme sur mesure sur devis.</p>
+    </div>
+</section>
+
+<!-- 8. COMPARAISON -->
+<section class="section">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">Comparer</p>
+            <h2>Pourquoi pas une agence, un site à faire soi-même ou une plateforme ?</h2>
+        </div>
+        <div class="table-wrap reveal">
+            <table class="compare">
+                <thead>
+                    <tr><th scope="col"><span class="sr-only">Critère</span></th><th scope="col">Agence web</th><th scope="col">Site à faire soi-même</th><th scope="col">Plateformes de mise en relation</th><th scope="col" class="us">Oiowa</th></tr>
+                </thead>
+                <tbody>
+                    <tr><th scope="row">Prix de départ</th><td>2 000 € à plus de 10 000 € pour un site vitrine <a class="sup" href="#sources">(5)</a></td><td>Abonnement bas, mais tout le travail est pour vous</td><td>Vous payez pour recevoir des contacts</td><td class="us">890 € HT, ou 0 € de création</td></tr>
+                    <tr><th scope="row">Votre temps</th><td>Plusieurs réunions</td><td>Des soirées entières</td><td>Répondre vite à chaque contact</td><td class="us">Environ une heure au total</td></tr>
+                    <tr><th scope="row">Les demandes de clients</th><td>Arrivent sur votre site</td><td>Arrivent sur votre site</td><td>Partagées avec d'autres artisans</td><td class="us">Arrivent sur votre site, et sont à vous</td></tr>
+                    <tr><th scope="row">Appels manqués et relances</th><td>Rarement proposés</td><td>Non</td><td>Non</td><td class="us">Inclus dans le Pack Chantiers</td></tr>
+                    <tr><th scope="row">Délai</th><td>Plusieurs semaines</td><td>Selon votre temps libre</td><td>Immédiat</td><td class="us">10 jours</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- 9. QUI SOMMES-NOUS -->
+<section class="section section--soft">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">Qui sommes-nous</p>
+            <h2>Deux interlocuteurs à Montpellier, un seul qui suit votre dossier</h2>
+        </div>
+        <div class="team" data-stagger>
+            <div class="member reveal">
+                <img src="assets/img/camille.jpg" alt="Camille" width="96" height="96" loading="lazy">
+                <div>
+                    <h3>Camille</h3>
+                    <p class="role">Sites internet et visibilité sur Google</p>
+                    <p>Consultante en marketing, Camille a notamment refait les sites et le référencement de l'installateur photovoltaïque <a href="references/energie-verte-maison">Énergie Verte Maison</a>. Elle suit les plombiers et chauffagistes.</p>
+                </div>
+            </div>
+            <div class="member reveal">
+                <div class="avatar" aria-hidden="true">M</div>
+                <div>
+                    <h3>Malick</h3>
+                    <p class="role">Automatismes et suivi des clients</p>
+                    <p>Malick suit les électriciens et vous accompagne de la maquette jusqu'à la mise en ligne, puis tout au long de l'année.</p>
+                </div>
+            </div>
+        </div>
+        <p class="team-note reveal">On parle votre langue, pas celle des informaticiens.</p>
+    </div>
+</section>
+
+<!-- 10. QUESTIONS FRÉQUENTES -->
+<section class="section">
+    <div class="container">
+        <div class="section-head section-head--center reveal">
+            <p class="eyebrow">Questions fréquentes</p>
+            <h2>Vous vous posez des questions ?</h2>
+        </div>
+        <div class="faq reveal">
+            <details open>
+                <summary>Je n'y connais rien en informatique, c'est un problème ?</summary>
+                <div class="answer"><p>Non, c'est même pour ça qu'on existe. Vous répondez à un questionnaire de 15 minutes, vous nous envoyez des photos de chantiers, et on s'occupe du reste. Tout ce que vous recevez arrive par SMS.</p></div>
+            </details>
+            <details>
+                <summary>Combien de temps ça va me prendre ?</summary>
+                <div class="answer"><p>Environ une heure au total : l'appel de départ, le questionnaire et la validation du site.</p></div>
+            </details>
+            <details>
+                <summary>Le site m'appartient-il ?</summary>
+                <div class="answer"><p>Oui. Si vous arrêtez, on vous transmet votre site et votre nom de domaine.</p></div>
+            </details>
+            <details>
+                <summary>Où est hébergé mon site ?</summary>
+                <div class="answer"><p>En France, chez LWS.</p></div>
+            </details>
+            <details>
+                <summary>J'ai déjà un site. Vous pouvez le refaire ?</summary>
+                <div class="answer"><p>Oui. On reprend vos textes, vos photos et votre nom de domaine, et on garde ce qui fonctionne.</p></div>
+            </details>
+            <details>
+                <summary>Les SMS automatiques, ça ne fait pas robot ?</summary>
+                <div class="answer"><p>Les messages sont écrits avec vous, signés de votre prénom, et envoyés à des horaires corrects. Vos clients y voient surtout un artisan sérieux qui répond vite.</p></div>
+            </details>
+            <details>
+                <summary>Je suis engagé combien de temps ?</summary>
+                <div class="answer"><p>Formule Essentiel avec frais de création : sans engagement après la première année. Pack Chantiers : 12 mois. Formules sans frais de création : 24 mois.</p></div>
+            </details>
+            <details>
+                <summary>Et si je veux changer quelque chose sur mon site ?</summary>
+                <div class="answer"><p>Deux mises à jour par an sont incluses. Pour une modification urgente (nouveau numéro, fermeture exceptionnelle), un message suffit.</p></div>
+            </details>
+            <details>
+                <summary>Vous pouvez vous connecter à mon logiciel de devis ?</summary>
+                <div class="answer"><p>Souvent, oui (Obat, Tolteck, Batappli…). C'est une option : on regarde ensemble ce que permet votre logiciel.</p></div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- 11. APPEL FINAL -->
+<section class="section" style="padding-top:0" id="maquette">
+    <div class="container">
+        <div class="cta reveal reveal--zoom">
+            <div class="blobs" aria-hidden="true">
+                <span class="blob blob--green"></span>
+                <span class="blob blob--orange"></span>
+                <span class="blob blob--pink"></span>
+                <span class="blob blob--blue"></span>
+            </div>
+            <h2>Voyez votre futur site avant de payer quoi que ce soit</h2>
+            <p>Envoyez-nous le nom de votre entreprise, votre métier et votre commune. On vous prépare une maquette gratuite en 48 h, à partir de votre fiche Google. Vous décidez ensuite.</p>
+            <div class="btn-row" style="justify-content:center">
+                <a class="btn btn--primary" href="#" data-email="cannaler.pro|gmail.com" data-maquette data-magnetic>Recevoir ma maquette gratuite
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+            </div>
+            <p class="contact-line">Ou écrivez-nous directement : <a href="#" data-email="cannaler.pro|gmail.com"><span data-email-text>cannaler.pro [at] gmail.com</span></a></p>
+        </div>
+    </div>
+</section>
+
+<!-- SOURCES -->
+<section class="section" style="padding-top:0" id="sources">
+    <div class="container sources">
+        <p><strong>Sources des chiffres</strong></p>
+        <ol>
+            <li><a href="https://asteres.fr/site/wp-content/uploads/2024/12/ASTERES-FAFCEA-Impact-de-lIA-06122024.pdf" target="_blank" rel="noopener">Asterès pour le FAFCEA, étude sur l'impact de l'IA dans l'artisanat, 2024</a> : 10 h de tâches de gestion sur 46 h de travail hebdomadaire.</li>
+            <li><a href="https://www.capeb.fr/actualites/barometre-arti-sante-8e-edition" target="_blank" rel="noopener">CAPEB, baromètre Artisanté, 8e édition, 2022</a>.</li>
+            <li><a href="https://www.capeb.fr/www/capeb/media/cp-capeb-note-de-conjoncture-t1-2025.pdf" target="_blank" rel="noopener">CAPEB, note de conjoncture du 1er trimestre 2025</a>.</li>
+            <li><a href="https://www.capeb.fr/www/capeb/media/national/communique-de-presse-capeb-conference-de-presse-t4-2025-mfsmmr.pdf" target="_blank" rel="noopener">CAPEB, conférence de presse sur le 4e trimestre 2025</a>.</li>
+            <li><a href="https://www.codeur.com/pages/quel-prix-site-vitrine" target="_blank" rel="noopener">Codeur.com, prix d'un site vitrine</a>.</li>
+        </ol>
+    </div>
+</section>
+
+</main>
+
+<!-- PIED DE PAGE -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>© <span data-year>2026</span> Oiowa · Montpellier · Sites et automatisations pour artisans du bâtiment</p>
+            <p><a href="a-propos">Qui sommes-nous</a> · <a href="mentions-legales">Mentions légales</a></p>
+        </div>
+    </div>
+</footer>
+
+<button class="top-button" type="button" aria-label="Revenir en haut de la page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="assets/js/main.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    /* Sélecteur de tarifs */
+    var data = {
+        standard: { essentiel: ['890 €', '49 €', 'Sans engagement après la première année.'], chantiers: ['1 490 €', '99 €', 'Engagement 12 mois.'] },
+        zero: { essentiel: ['0 €', '79 €', 'Engagement 24 mois.'], chantiers: ['0 €', '149 €', 'Engagement 24 mois.'] }
+    };
+    var buttons = document.querySelectorAll('.price-toggle button');
+    buttons.forEach(function (b) {
+        b.addEventListener('click', function () {
+            var mode = b.getAttribute('data-mode');
+            buttons.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+            ['essentiel', 'chantiers'].forEach(function (p) {
+                var box = document.querySelector('.price[data-plan="' + p + '"]');
+                box.querySelector('.setup').textContent = data[mode][p][0];
+                box.querySelector('.monthly').textContent = data[mode][p][1];
+                document.querySelector('.terms[data-plan="' + p + '"]').textContent = data[mode][p][2];
+            });
+        });
+    });
+
+    /* E-mail pré-rempli pour la demande de maquette */
+    var subject = 'Demande de maquette gratuite';
+    var body = "Bonjour,\n\nJe souhaite recevoir une maquette gratuite.\n\nNom et prénom :\nEntreprise :\nMétier :\nCommune :\nTéléphone :\nJ'ai déjà un site (oui / non) :\n\nMerci !";
+    document.querySelectorAll('[data-maquette]').forEach(function (a) {
+        var addr = 'cannaler.pro' + '@' + 'gmail.com';
+        a.href = 'mailto:' + addr + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    });
+});
+</script>
+</body>
+</html>
