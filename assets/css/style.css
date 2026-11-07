@@ -600,6 +600,12 @@ a.sr-only:focus {
     overflow:hidden;
 }
 
+/* les taches s'estompent vers le bas : pas de coupure nette avec la section suivante */
+.page-hero .blobs {
+    -webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 55%,transparent 100%);
+}
+
 .page-hero .blob { --s:340px; opacity:.4; }
 .page-hero .blob--green { top:-30%; left:-8%; }
 .page-hero .blob--pink { top:-20%; right:-6%; animation-delay:-6s; }
