@@ -1224,7 +1224,8 @@ a.sr-only:focus {
     box-shadow:var(--shadow-lg);
 }
 
-.ref-hero-logo img { width:100%; height:auto; }
+/* même encombrement pour tous les logos, larges ou carrés */
+.ref-hero-logo img { width:auto; height:auto; max-width:80%; max-height:190px; }
 
 .ref-sector {
     margin-bottom:6px;
@@ -1937,3 +1938,5 @@ body.has-cursor .cursor-glow { opacity:1; }
 .stat span { color:var(--muted); }
 
 .btn svg[viewBox] { flex-shrink:0; }
+
+.showcase { max-width:980px; margin:0 auto; }
