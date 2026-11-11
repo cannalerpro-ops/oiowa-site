@@ -1499,6 +1499,10 @@ a.sr-only:focus {
     font-size:.88rem;
 }
 
+/* « Tous droits réservés » et « Mentions légales » sur la même ligne */
+.footer-bottom { align-items:center; }
+.footer-bottom p { margin:0; }
+
 /* ---------- Bouton retour en haut ---------- */
 
 .top-button {
