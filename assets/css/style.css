@@ -58,6 +58,7 @@ a {
 
 h1,h2,h3,h4 {
     text-wrap:pretty;
+    overflow-wrap:break-word;
     font-family:'Montserrat',sans-serif;
     line-height:1.15;
     letter-spacing:-.02em;
@@ -182,29 +183,21 @@ a.sr-only:focus {
 
 /* Surlignage façon marqueur, coloré selon la charte */
 .mark {
-    position:relative;
-    white-space:nowrap;
-    z-index:0;
-}
-
-.mark::after {
-    content:"";
-    position:absolute;
-    left:-4px;
-    right:-4px;
-    bottom:.08em;
-    height:.38em;
+    /* le surlignage suit le texte, y compris quand il passe à la ligne */
+    padding:0 4px;
+    margin:0 -4px;
     border-radius:4px;
-    background:var(--c,var(--blue));
-    opacity:.55;
-    z-index:-1;
-    transform-origin:left;
-    transform:scaleX(0);
-    transition:transform 1s var(--ease) .4s;
+    background-image:linear-gradient(color-mix(in srgb,var(--c,var(--blue)) 55%,transparent),color-mix(in srgb,var(--c,var(--blue)) 55%,transparent));
+    background-repeat:no-repeat;
+    background-position:0 88%;
+    background-size:0% .38em;
+    -webkit-box-decoration-break:clone;
+    box-decoration-break:clone;
+    transition:background-size 1s var(--ease) .4s;
 }
 
-.is-visible .mark::after,
-.mark.is-visible::after { transform:scaleX(1); }
+.is-visible .mark,
+.mark.is-visible { background-size:100% .38em; }
 
 .mark--green { --c:var(--green); }
 .mark--orange { --c:var(--orange); }
@@ -339,15 +332,25 @@ a.sr-only:focus {
     right:0;
     height:var(--header-h);
     z-index:100;
-    transition:background .4s,box-shadow .4s,height .4s;
+    transition:background .4s,box-shadow .4s;
 }
 
-.header.is-scrolled {
-    background:rgba(255,255,255,.82);
-    backdrop-filter:blur(14px);
+.header::before {
+    /* fond flouté porté par un pseudo-élément : un backdrop-filter sur .header
+       rendrait le menu mobile (position:fixed) relatif à l'en-tête au lieu de l'écran */
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.85);
     -webkit-backdrop-filter:blur(14px);
+    backdrop-filter:blur(14px);
     box-shadow:0 1px 0 var(--line);
+    opacity:0;
+    transition:opacity .4s;
+    z-index:-1;
 }
+
+.header.is-scrolled::before { opacity:1; }
 
 .header .container {
     height:100%;
@@ -454,8 +457,7 @@ a.sr-only:focus {
     height:var(--s,420px);
     border-radius:50%;
     filter:blur(70px);
-    opacity:.55;
-    mix-blend-mode:multiply;
+    opacity:.45;
     animation:float var(--d,18s) ease-in-out infinite alternate;
 }
 
@@ -828,8 +830,7 @@ a.sr-only:focus {
     aspect-ratio:1/1;
     border-radius:50%;
     filter:blur(28px);
-    opacity:.75;
-    mix-blend-mode:multiply;
+    opacity:.7;
     animation:orbit 14s ease-in-out infinite alternate;
 }
 
@@ -1154,7 +1155,7 @@ a.sr-only:focus {
     isolation:isolate;
 }
 
-.cta .blob { --s:340px; opacity:.35; }
+.cta .blob { --s:340px; opacity:.28; }
 .cta .blob--green { top:-40%; left:-10%; }
 .cta .blob--orange { bottom:-50%; left:25%; animation-delay:-5s; }
 .cta .blob--pink { top:-40%; right:15%; animation-delay:-9s; }
@@ -1498,6 +1499,10 @@ a.sr-only:focus {
     font-size:.88rem;
 }
 
+/* « Tous droits réservés » et « Mentions légales » sur la même ligne */
+.footer-bottom { align-items:center; }
+.footer-bottom p { margin:0; }
+
 /* ---------- Bouton retour en haut ---------- */
 
 .top-button {
@@ -1652,9 +1657,7 @@ body.has-cursor .cursor-glow { opacity:1; }
         flex-direction:column;
         justify-content:center;
         gap:10px;
-        background:rgba(255,255,255,.97);
-        backdrop-filter:blur(16px);
-        -webkit-backdrop-filter:blur(16px);
+        background:white;
         opacity:0;
         visibility:hidden;
         transition:opacity .4s,visibility .4s;
@@ -1940,3 +1943,32 @@ body.has-cursor .cursor-glow { opacity:1; }
 .btn svg[viewBox] { flex-shrink:0; }
 
 .showcase { max-width:980px; margin:0 auto; }
+
+/* ---------- Mobile : fonds clairs et nets ---------- */
+
+@media (max-width:900px) {
+    /* haut de page d'accueil en blanc */
+    .hero .blobs { display:none; }
+    .hero::after { display:none; }
+
+    .page-hero .blob { opacity:.16; }
+
+    /* bloc de fin : dégradé léger aux couleurs de la charte, sans taches floues */
+    .cta .blobs { display:none; }
+    .cta {
+        background:linear-gradient(140deg,
+            color-mix(in srgb,var(--green) 16%,white) 0%,
+            white 45%,
+            color-mix(in srgb,var(--blue) 18%,white) 100%);
+        box-shadow:inset 0 0 0 1px var(--line);
+    }
+
+    /* le logo reste visible quand le menu est ouvert */
+    .brand { position:relative; z-index:120; }
+}
+
+/* une colonne de grille ne doit jamais s'élargir à cause d'un long mot (adresse e-mail…) */
+.split > *,
+.grid > * { min-width:0; }
+
+.contact-channel small { overflow-wrap:anywhere; }
